@@ -1,0 +1,18 @@
+## 문제점
+webpack config를 바닥부터 다져가는건 분명 좋은 일이지만 config는 시간과 정성을 너무도 많이 들여야만 하며
+버전 관리도 전부 신경 써주어야 한다. 따라서 framework를 사용하되 framework를 벗어나는 경우 webpack 등의 세팅을 통해
+문제점을 해결하도록 하자.
+
+## 문제의 해결
+
+우선 CRA -> NEXT.JS 순서를 밟아 react + typescript + jest(react testing library)를 사용한다.
+
+부가적으로는 styled-components를 메인으로 사용하고 typescript를 지원하는 material ui를 도입 한다.
+
+## 배운점
+
+위 세팅에 익숙해지고 나면 eject를 통해 원하는대로 프로젝트를 꾸며볼 수 있을 것이다.
+
+## 느낀점
+
+큰 회사가 쓰는 이유는 다 있다.
