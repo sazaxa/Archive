@@ -148,9 +148,40 @@ functional component에서 hook을 통해 apollo client에 접근하는 것을 �
 
 따라서 redux에 선언해놓은 apolloclient.* 을 사용해야한다.
 
--> query = apolloClient.httpClient.query({...}) 형태로 사용하면 된다.
 
--> mutation = apolloClient.uploadClient.mutate({...}) 형태로 사용하면 된다.
+준비
+1. react-redux.useSelector를 통해 state를 선택한다. (apolloClient) (e.g.)
+`const { apolloClient } = useSelector((state)=>state)`
 
-둘 의 차이는 크게는 endpoint의 차이이며 세세하게은 middleware의 차이이다.
+2. type을 선언한다. (e.g.)
+```js
+  const ADD_SELLER_PRODUCT = gql`
+    mutation saveSellerProductFile($sellerProductFile:SellerProductFileInput){
+      saveSellerProductFile(sellerProductFile:$sellerProductFile){
+      statusCode
+      data 
+      }
+    }
+  `
+```
+3. 적절히 비동기 호출한다. (apollographql API)[https://www.apollographql.com/docs/react/api/core/ApolloClient/#ApolloClient.mutate]
+```js
+    try{
+   await apolloClient.uploadClient.mutate({
+      mutation:ADD_SELLER_PRODUCT,
+      variables: {
+        name: filesName[0]
+      }
+    }).then(result=>console.log('result: ',result))
+  }catch(error){
+    console.error(error)
+  }
+```
+
+### TL;DR
+> -> query = apolloClient.httpClient.query({...}) 형태로 사용하면 된다.
+
+> -> mutation = apolloClient.uploadClient.mutate({...}) 형태로 사용하면 된다.
+
+> 둘 의 차이는 크게는 endpoint의 차이이며 세세하게은 middleware의 차이이다.
 
