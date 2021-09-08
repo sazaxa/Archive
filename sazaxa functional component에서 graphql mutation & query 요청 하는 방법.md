@@ -149,7 +149,8 @@ functional component에서 hook을 통해 apollo client에 접근하는 것을 �
 따라서 redux에 선언해놓은 apolloclient.* 을 사용해야한다.
 
 
-준비
+### Get started
+
 1. react-redux.useSelector를 통해 state를 선택한다. (apolloClient) (e.g.)
 `const { apolloClient } = useSelector((state)=>state)`
 
